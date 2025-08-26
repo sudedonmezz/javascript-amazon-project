@@ -46,7 +46,7 @@ productHTML+=` <div class="product-container">
             Added
           </div>
 
-          <button class="add-to-cart-button button-primary">
+          <button class="add-to-cart-button button-primary js-add-to-cart" data-product-id="${product.id}">
             Add to Cart
           </button>
         </div>`;
@@ -60,6 +60,32 @@ productHTML+=` <div class="product-container">
     );
 
 
-console.log(productHTML);
+//console.log(productHTML);
 
 document.querySelector(".products-js").innerHTML=productHTML;
+document.querySelectorAll(".js-add-to-cart").forEach((button, index) => {
+  button.addEventListener("click", () => {
+   
+    
+    const productId=button.dataset.productId;
+    console.log(productId);
+    
+    let matchingItem = cart.find(item => item.productId === productId);
+     
+    
+      if(matchingItem){
+
+        matchingItem.quantity++;
+      }
+      else {
+        cart.push({
+          productId:productId,
+          quantity :1
+        });
+      }
+
+    
+
+    console.log(cart);
+  });
+}); 

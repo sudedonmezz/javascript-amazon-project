@@ -4,6 +4,7 @@ import { formatCurrency } from "../utils/money.js";
 import {hello} from 'https://unpkg.com/supersimpledev@1.0.1/hello.esm.js';
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 import { deliveryOptions,getDeliveryOptions } from "../../data/deliveryOptions.js";
+import { renderPaymentSummary } from "./paymentSummary.js";
 
 hello(); 
 
@@ -124,12 +125,14 @@ link.addEventListener('click',()=>{
   let productId=link.dataset.productId;
  
   deleteFromCart(productId);
+ 
 
 let container= document.querySelector(`.js-cart-item-containter-${productId}`)
 
 container.remove();
 
-console.log(container);
+ renderOrderSummary();
+  renderPaymentSummary();
  
 })
 });
@@ -140,6 +143,7 @@ option.addEventListener('click',()=>{
   const {productId, deliveryOptionId}=option.dataset;
 updateDeliveryOption(productId,deliveryOptionId);
 renderOrderSummary();
+renderPaymentSummary();
 
 });
 });

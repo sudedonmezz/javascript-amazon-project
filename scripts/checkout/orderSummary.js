@@ -31,7 +31,7 @@ let dateString=deliveryDate.format('dddd, MMMM D');
 
 
 
-   checkoutHTML += `<div class="cart-item-container js-cart-item-containter-${matchingProducts.id}">
+   checkoutHTML += `<div class="cart-item-container js-cart-item-container js-cart-item-containter-${matchingProducts.id}">
             <div class="delivery-date">
              Delivery date: ${dateString}
             </div>
@@ -47,14 +47,14 @@ let dateString=deliveryDate.format('dddd, MMMM D');
                 <div class="product-price">
                   ${formatCurrency(matchingProducts.priceCents)} $
                 </div>
-                <div class="product-quantity">
+                <div class="product-quantity js-product-quantity-${matchingProducts.id}">
                   <span>
                     Quantity: <span class="quantity-label">${cartItem.quantity}</span>
                   </span>
                   <span class="update-quantity-link link-primary">
                     Update
                   </span>
-                  <span class="delete-quantity-link link-primary js-delete-link" data-product-id="${matchingProducts.id}">
+                  <span class="delete-quantity-link js-delete-link-${matchingProducts.id} link-primary js-delete-link" data-product-id="${matchingProducts.id}">
                     Delete
                   </span>
                 </div>
